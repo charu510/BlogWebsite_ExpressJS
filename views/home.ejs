@@ -1,0 +1,30 @@
+<%- include("partials/header.ejs") -%>
+<h1>Home</h1>
+
+<!-- rendering the content  -->
+
+<p>
+    <%= startingContent %>
+</p>
+
+<!-- console logging the posts array-->
+<!-- <% for(var i=0;i<posts_array.length;i++){ %>
+    <% console.log(posts_array[i].title) %>
+<% } %> -->
+
+<!-- making use of the forEach loop -->
+<% posts_array.forEach(function(post){ %>
+    <h1><%= post.title %></h1>
+
+
+    <!--Truncating the content to 100 chars-->
+    <% var string = post.body; %>
+    <% var truncString = string.substring(0,100) + "..." %>
+    
+    <p>
+        <%= truncString %>
+        <a href="/posts/<%= post.title%>">Read More</a>
+    </p>
+<% }); %>
+
+<%- include("partials/footer.ejs") -%>
